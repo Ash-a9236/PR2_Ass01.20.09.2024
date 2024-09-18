@@ -26,6 +26,15 @@ public class Student {
         }
     }
 
+    public void returnBook(Book book) {
+        if (borrowedBooks.remove(book)) {
+            book.returnBook();
+            System.out.println("Successfully returned: " + book.getTitle());
+        } else {
+            System.out.println("This book was not borrowed.");
+        }
+    }
+
     /*
 STUDENT_________________________________________________________________________________________________________________
 o Name
