@@ -13,6 +13,19 @@ public class Student {
         this.borrowedBooks = new ArrayList<>();
     }
 
+    public void borrowBook(Book book) {
+        if (borrowedBooks.size() < 3 && book.getAvailableCopies() > 0) {
+            borrowedBooks.add(book);
+            book.borrowBook();
+            System.out.println("Book borrowed : " + book.getTitle() + " by " + book.getAuthor());
+        } else if(borrowedBooks.size() == 3){
+            System.out.println("You already have 3 books borrowed. Return one to borrow " + book.getTitle()
+                    + " by " + book.getAuthor());
+        } else if(book.getAvailableCopies() == 0) {
+            System.out.println("No copies available at the moment for " + book.getTitle() + " by " + book.getAuthor());
+        }
+    }
+
     /*
 STUDENT_________________________________________________________________________________________________________________
 o Name
