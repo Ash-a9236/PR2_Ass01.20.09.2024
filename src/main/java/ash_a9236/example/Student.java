@@ -35,6 +35,38 @@ public class Student {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Student " + + rollNumber +
+                "\nName : " + name + '\'' +
+                "Books borrowed : " + borrowedBooks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getRollNumber() {
+        return rollNumber;
+    }
+
+    public void setRollNumber(int rollNumber) {
+        this.rollNumber = rollNumber;
+    }
+
+    public ArrayList<Book> getBorrowedBooks() {
+        return borrowedBooks;
+    }
+
+    public void setBorrowedBooks(ArrayList<Book> borrowedBooks) {
+        this.borrowedBooks = borrowedBooks;
+    }
+
+
     /*
 STUDENT_________________________________________________________________________________________________________________
 o Name
@@ -64,34 +96,6 @@ class Student {
     private String rollNumber;
     private ArrayList<Book> borrowedBooks;
 
-    public Student(String name, String rollNumber) {
-        this.name = name;
-        this.rollNumber = rollNumber;
-        this.borrowedBooks = new ArrayList<>();
-    }
-
-    public String getRollNumber() {
-        return rollNumber;
-    }
-
-    public void borrowBook(Book book) {
-        if (borrowedBooks.size() < 3 && !borrowedBooks.contains(book)) {
-            borrowedBooks.add(book);
-            book.borrowBook();
-            System.out.println("Successfully borrowed: " + book.getTitle());
-        } else {
-            System.out.println("Cannot borrow this book.");
-        }
-    }
-
-    public void returnBook(Book book) {
-        if (borrowedBooks.remove(book)) {
-            book.returnBook();
-            System.out.println("Successfully returned: " + book.getTitle());
-        } else {
-            System.out.println("This book was not borrowed.");
-        }
-    }
 
     public ArrayList<Book> getBorrowedBooks() {
         return borrowedBooks;
