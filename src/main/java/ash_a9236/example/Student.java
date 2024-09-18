@@ -14,7 +14,7 @@ public class Student {
     }
 
     public void borrowBook(Book book) {
-        if (borrowedBooks.size() < 3 && book.getAvailableCopies() > 0) {
+        if (borrowedBooks.size() < 3 && book.getAvailableCopies() > 0 && !borrowedBooks.contains(book)) {
             borrowedBooks.add(book);
             book.borrowBook();
             System.out.println("Book borrowed : " + book.getTitle() + " by " + book.getAuthor());
@@ -23,6 +23,8 @@ public class Student {
                     + " by " + book.getAuthor());
         } else if(book.getAvailableCopies() == 0) {
             System.out.println("No copies available at the moment for " + book.getTitle() + " by " + book.getAuthor());
+        } else if(borrowedBooks.contains(book)) {
+            System.out.println("You have already borrowed " + book.getTitle() + " by " + book.getAuthor());
         }
     }
 
