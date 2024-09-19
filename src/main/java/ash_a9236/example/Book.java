@@ -1,10 +1,11 @@
 package ash_a9236.example;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class Book {
 
-    public static int count = 0;
+    public static int count = 1;
     private final String bookID;
     private final String title;
     private final String author;
@@ -14,7 +15,13 @@ public class Book {
         this.title = title;
         this.author = author;
         this.availableCopies = availableCopies;
-        this.bookID = title.substring(0, 3).toUpperCase() + count++;
+        this.bookID = title.substring(0, 3).toUpperCase() + createRandId() + count++;
+    }
+
+    public int createRandId() {
+        Random rand = new Random();
+        int randNum = rand.nextInt(100, 1000);
+        return randNum;
     }
 
     public void borrowBook() {
@@ -74,9 +81,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book" + bookID +
-                "\nTitle : " + title + '\'' +
-                "Author : " + author + '\'' +
-                "AvailableCopies : " + availableCopies + " available copies";
+        return "Book " + bookID +
+                "\nTitle : " + title +
+                "\nAuthor : " + author +
+                "\nAvailableCopies : " + availableCopies + " available copies";
     }
 }

@@ -41,8 +41,8 @@ public class Student {
     @Override
     public String toString() {
         return "Student " + + rollNumber +
-                "\nName : " + name + '\'' +
-                "Books borrowed : " + borrowedBooks;
+                "\nName : " + name +
+                "\nBooks borrowed : " + borrowedBooks;
     }
 
     @Override
