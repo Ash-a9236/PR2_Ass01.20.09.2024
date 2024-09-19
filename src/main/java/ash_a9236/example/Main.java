@@ -2,6 +2,11 @@ package ash_a9236.example;
 
 import java.util.Scanner;
 
+/*/
+TO DO
+#3 is not working (student ID or Book ID is declared as null or smthing
+ */
+
 public class Main {
     public static void main(String[] args) {
         LibraryManagmentSystem lms = new LibraryManagmentSystem();
@@ -20,7 +25,7 @@ public class Main {
             System.out.println("6. Display Books");
             System.out.println("7. Exit");
             System.out.println("Enter your choice : ");
-            System.out.println("_________________________________________________________________");
+            System.out.println("_________________________________________________________________\n");
 
             userAns = scanner.nextLine();
 
@@ -42,6 +47,7 @@ public class Main {
                 case "3":
                     System.out.print("Enter Student Roll Number : ");
                     int borrowRollNumber = scanner.nextInt();
+                    String extraLine = scanner.nextLine();
                     System.out.print("Enter Book ID : ");
                     String borrowBookId = scanner.nextLine();
                     lms.borrowBook(borrowRollNumber, borrowBookId);
@@ -70,14 +76,6 @@ public class Main {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-
-//            System.out.println("Do you wish to continue? \nAnswer with yes or no.");
-//            String ans = scanner.next();
-//            if (ans.toLowerCase().equals("no")) {
-//                weContinue = false;
-//            } else {
-//                weContinue = true;
-//            }
         } while (!userAns.equals("7"));
     }
 }

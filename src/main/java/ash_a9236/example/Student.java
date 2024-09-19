@@ -14,6 +14,10 @@ public class Student {
         this.borrowedBooks = new ArrayList<>();
     }
 
+    /**
+     * Adds a book to a student borrowed books
+     * @param book the book to borrow
+     */
     public void borrowBook(Book book) {
         if (borrowedBooks.size() < 3 && book.getAvailableCopies() > 0 && !borrowedBooks.contains(book)) {
             borrowedBooks.add(book);
@@ -29,6 +33,10 @@ public class Student {
         }
     }
 
+    /**
+     * returns a book from a student to the system
+     * @param book the book to return
+     */
     public void returnBook(Book book) {
         if (borrowedBooks.remove(book)) {
             book.returnBook();
