@@ -1,18 +1,16 @@
 package ash_a9236.example;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-
-
-    /*
         public static void main(String[] args) {
-        LibraryManagementSystem lms = new LibraryManagementSystem();
-        Scanner scanner = new Scanner(System.in);
-        String choice;
+            LibraryManagmentSystem lms = new LibraryManagmentSystem();
+            Scanner scanner = new Scanner(System.in);
+            String userAns;
 
-        do {
-            System.out.println("Menu:");
+            System.out.println("_________________________________________________________________");
+            System.out.println("         Welcome to the Library Management System!");
             System.out.println("1. Add Book");
             System.out.println("2. Add Student");
             System.out.println("3. Borrow Book");
@@ -20,20 +18,20 @@ public class Main {
             System.out.println("5. Display Students");
             System.out.println("6. Display Books");
             System.out.println("7. Exit");
-            System.out.print("Enter your choice: ");
-            choice = scanner.nextLine();
+            System.out.println("Enter your choice : ");
+            System.out.println("_________________________________________________________________");
 
-            switch (choice) {
+            userAns = scanner.nextLine();
+
+            switch (userAns) {
                 case "1":
-                    System.out.print("Enter Book ID: ");
-                    String bookId = scanner.nextLine();
                     System.out.print("Enter Title: ");
                     String title = scanner.nextLine();
                     System.out.print("Enter Author: ");
                     String author = scanner.nextLine();
                     System.out.print("Enter Available Copies: ");
                     int availableCopies = Integer.parseInt(scanner.nextLine());
-                    lms.addBook(bookId, title, author, availableCopies);
+                    lms.addBook(title, author, availableCopies);
                     break;
 
                 case "2":
@@ -75,14 +73,9 @@ public class Main {
                 default:
                     System.out.println("Invalid choice. Please try again.");
             }
-        } while (!choice.equals("7"));
-
-        scanner.close();
-    }
-     */
-
-
-
+        }
+        while (!user.equals("7"));
 
     }
+
 }
