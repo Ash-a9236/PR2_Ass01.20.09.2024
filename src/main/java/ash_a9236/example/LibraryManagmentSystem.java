@@ -22,12 +22,14 @@ public class LibraryManagmentSystem {
         return null;
     }
 
-    public void addStudent(String name, int rollNumber) {
+    public void addStudent() {
         Scanner console = new Scanner(System.in);
         System.out.println("Please input the student roll number");
-        rollNumber = console.nextInt();
+        int rollNumber = console.nextInt();
 
         if (findStudent(rollNumber) == null) {
+            System.out.println("Input the student's full name : ");
+            String name = console.nextLine();
             students.add(new Student(name, rollNumber));
             System.out.println("Student added successfully.");
         } else {
@@ -43,7 +45,7 @@ public class LibraryManagmentSystem {
 
     private Book findBook(String title) {
         for (Book book : books) {
-            if (title.substring(0, 3).toUpperCase().equals(book.getTitle().substring(0, 3).toUpperCase())) {
+            if (title.equalsIgnoreCase(book.getTitle())) {
 //                System.out.println(book);
                 return book;
             }
@@ -68,14 +70,16 @@ public class LibraryManagmentSystem {
                 System.out.println("Book added to system successfully.");
             } else {
                 String addCopiesBook = findBook(title).getBookID();
+                System.out.println("How many copies do you wish to add?");
+                int newCopies = console.nextInt();
 
                 for (Book book : books) {
-
                     if (book.getBookID().equals(addCopiesBook)) {
-                        book.setAvailableCopies(book.getAvailableCopies() + 1);
+                        book.setAvailableCopies(book.getAvailableCopies() + newCopies);
                     }
                 }
-                System.out.println("New available copy added succefully!");
+                System.out.println("New available copy added succefully!\nThere are now "
+                        + findBook(title).getAvailableCopies() + " copies available.");
             }
         }
     }
