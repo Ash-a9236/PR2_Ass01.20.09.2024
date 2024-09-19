@@ -5,16 +5,16 @@ import java.util.Objects;
 public class Book {
 
     public static int count = 0;
-    private final int bookID;
+    private final String bookID;
     private final String title;
     private final String author;
     private int availableCopies;
 
-    public Book(int availableCopies, String author, String title, int bookID) {
-        this.availableCopies = availableCopies;
-        this.author = author;
+    public Book(String title, String author, int availableCopies) {
         this.title = title;
-        this.bookID = count++;
+        this.author = author;
+        this.availableCopies = availableCopies;
+        this.bookID = "" + count++;
     }
 
     public void borrowBook() {
@@ -39,7 +39,7 @@ public class Book {
         Book.count = count;
     }
 
-    public int getBookID() {
+    public String getBookID() {
         return bookID;
     }
 
@@ -57,6 +57,19 @@ public class Book {
 
     public void setAvailableCopies(int availableCopies) {
         this.availableCopies = availableCopies;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return availableCopies == book.availableCopies && Objects.equals(bookID, book.bookID) && Objects.equals(title, book.title) && Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookID, title, author, availableCopies);
     }
 
     @Override
