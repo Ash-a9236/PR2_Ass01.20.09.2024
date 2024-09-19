@@ -14,7 +14,7 @@ public class Book {
         this.title = title;
         this.author = author;
         this.availableCopies = availableCopies;
-        this.bookID = "" + count++;
+        this.bookID = title.substring(0, 3).toUpperCase() + count++;
     }
 
     public void borrowBook() {

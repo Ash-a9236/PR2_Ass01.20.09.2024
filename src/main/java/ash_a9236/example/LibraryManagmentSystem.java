@@ -2,6 +2,7 @@ package ash_a9236.example;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class LibraryManagmentSystem {
     private ArrayList<Book> books;
@@ -22,8 +23,16 @@ public class LibraryManagmentSystem {
     }
 
     public void addStudent(String name, int rollNumber) {
-        students.add(new Student(name, rollNumber));
-        System.out.println("Student added successfully.");
+        Scanner console = new Scanner(System.in);
+        System.out.println("Please input the student roll number");
+        rollNumber = console.nextInt();
+
+        if (findStudent(rollNumber) == null) {
+            students.add(new Student(name, rollNumber));
+            System.out.println("Student added successfully.");
+        } else {
+            System.out.println("Student No " + rollNumber + " already exists in the system");
+        }
     }
 
     public void displayStudents() {
@@ -32,9 +41,10 @@ public class LibraryManagmentSystem {
         }
     }
 
-    private Book findBook(String bookId) {
+    private Book findBook(String title) {
         for (Book book : books) {
-            if (book.getBookID().equals(bookId)) {
+            if (title.substring(0, 3).toUpperCase().equals(book.getTitle().substring(0, 3).toUpperCase())) {
+//                System.out.println(book);
                 return book;
             }
         }
@@ -42,8 +52,32 @@ public class LibraryManagmentSystem {
     }
 
     public void addBook(String title, String author, int availableCopies) {
-        books.add(new Book(title, author, availableCopies));
-        System.out.println("Book added successfully.");
+        Scanner console = new Scanner(System.in);
+        String ans = "";
+
+        if (findBook(title) == null) {
+            books.add(new Book(title, author, availableCopies));
+            System.out.println("Book added to system successfully.");
+        } else {
+            System.out.println("The book you want to add seems to already be in the system..." +
+                    "\nIs this the book you want to add? \n" + findBook(title) + "Answer with yes or no");
+            ans = console.nextLine();
+
+            if (ans.toLowerCase().equals("no")) {
+                books.add(new Book(title, author, availableCopies));
+                System.out.println("Book added to system successfully.");
+            } else {
+                String addCopiesBook = findBook(title).getBookID();
+
+                for (Book book : books) {
+
+                    if (book.getBookID().equals(addCopiesBook)) {
+                        book.setAvailableCopies(book.getAvailableCopies() + 1);
+                    }
+                }
+                System.out.println("New available copy added succefully!");
+            }
+        }
     }
 
     public void displayBooks() {
