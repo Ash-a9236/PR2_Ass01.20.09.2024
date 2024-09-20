@@ -35,7 +35,7 @@ public class Book {
     public void borrowBook() {
         if (availableCopies > 0) {
             availableCopies--;
-            System.out.println("Book borrowed.");
+            System.out.println("\nBook borrowed.");
         } else {
             System.out.println("No copies available at the moment.");
         }
@@ -92,9 +92,9 @@ public class Book {
 
     @Override
     public String toString() {
-        return "Book " + bookID +
+        return "\nBook " + bookID +
                 "\nTitle : " + title +
                 "\nAuthor : " + author +
-                "\nAvailableCopies : " + availableCopies + " available copies";
+                "\nAvailable Copies : " + availableCopies + "\n";
     }
 }

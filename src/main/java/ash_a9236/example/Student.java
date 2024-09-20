@@ -46,6 +46,12 @@ public class Student {
         }
     }
 
+    public void printBorrowedBooks(ArrayList<Book> borrowedBooks) {
+        for (int i = 0; i < borrowedBooks.size(); i++) {
+            System.out.println("- " + borrowedBooks.get(i));
+        }
+    }
+
     @Override
     public String toString() {
         return "Student " + + rollNumber +
