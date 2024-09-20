@@ -28,9 +28,9 @@ public class LibraryManagmentSystem {
     }
 
     /**
-     * Finds a book in the system through their title
+     * Finds a book in the system through their unique ID
      * @param bookID the book's ID
-     * @return the book if there is already a book with that title in the system or null if there aren't
+     * @return the book if there is already a book with that ID in the system or null if there aren't
      */
     private Book findBook(String bookID) {
         for (Book book : books) {
@@ -41,6 +41,11 @@ public class LibraryManagmentSystem {
         return null;
     }
 
+    /**
+     * Finds a book in the system through their title
+     * @param title the book's title
+     * @return the book if there is already a book with that title in the system or null if there aren't
+     */
     public Book findBookThroughTitle(String title) {
         for (Book book : books) {
             if (title.equalsIgnoreCase(book.getTitle())) {

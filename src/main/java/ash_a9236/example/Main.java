@@ -39,7 +39,7 @@ public class Main {
                 System.out.println("    1. Add Book                         4. Return Book");
                 System.out.println("    2. Add Student                      5. Display Students");
                 System.out.println("    3. Borrow Book                      6. Display Books");
-                System.out.println("                        7. Exit");
+                System.out.println("                       7. Exit");
                 System.out.println("_________________________________________________________________\n");
                 isFirstPass = false;
             } else {
@@ -48,7 +48,7 @@ public class Main {
                 System.out.println("1. Add Book                         4. Return Book");
                 System.out.println("2. Add Student                      5. Display Students");
                 System.out.println("3. Borrow Book                      6. Display Books");
-                System.out.println("                        7. Exit");
+                System.out.println("                       7. Exit");
                 System.out.print("_________________________________________________________________\n");
             }
 

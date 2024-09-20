@@ -22,14 +22,14 @@ public class Student {
         if (borrowedBooks.size() < 3 && book.getAvailableCopies() > 0 && !borrowedBooks.contains(book)) {
             borrowedBooks.add(book);
             book.borrowBook();
-            System.out.println("Book borrowed : " + book.getTitle() + " by " + book.getAuthor());
+            System.out.println("Book borrowed : " + book.getTitle() + " BY " + book.getAuthor());
         } else if(borrowedBooks.size() == 3){
             System.out.println("You already have 3 books borrowed. Return one to borrow " + book.getTitle()
                     + " by " + book.getAuthor());
         } else if(book.getAvailableCopies() == 0) {
-            System.out.println("No copies available at the moment for " + book.getTitle() + " by " + book.getAuthor());
+            System.out.println("No copies available at the moment for " + book.getTitle() + " BY " + book.getAuthor());
         } else if(borrowedBooks.contains(book)) {
-            System.out.println("You have already borrowed " + book.getTitle() + " by " + book.getAuthor());
+            System.out.println("You have already borrowed " + book.getTitle() + " BY " + book.getAuthor());
         }
     }
 
@@ -54,9 +54,21 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student " + + rollNumber +
-                "\nName : " + name +
-                "\nBooks borrowed : " + borrowedBooks;
+        StringBuilder sb = new StringBuilder();
+        sb.append("Student ").append(rollNumber)
+                .append("\nName: ").append(name)
+                .append("\nBooks borrowed:\n");
+
+        // Call printBorrowedBooks to print the borrowed books
+        if (borrowedBooks.isEmpty()) {
+            sb.append("No books borrowed.");
+        } else {
+            for (Book book : borrowedBooks) {
+                sb.append("_").append(book);
+            }
+        }
+
+        return sb.toString(); // Return the string representation
     }
 
     @Override
